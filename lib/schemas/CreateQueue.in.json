@@ -1,0 +1,110 @@
+{
+    "type": "object",
+    "properties": {
+        "Action": {
+            "required": true,
+            "type": "string"
+        },
+        "Version": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "properties": {
+                "Description": {
+                    "description": "Optional. A description of the queue that you are creating.",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The name of the queue that you are creating.",
+                    "type": "string"
+                },
+                "PricingPlan": {
+                    "description": "Specifies whether the pricing plan for the queue is on-demand or reserved. For on-demand, you pay per minute, billed in increments of .01 minute. For reserved, you pay for the transcoding capacity of the entire queue, regardless of how much or how little you use it. Reserved pricing requires a 12-month commitment. When you use the API to create a queue, the default is on-demand.",
+                    "enum": [
+                        "ON_DEMAND",
+                        "RESERVED"
+                    ],
+                    "type": "string"
+                },
+                "ReservationPlanSettings": {
+                    "description": "Details about the pricing plan for your reserved queue. Required for reserved queues and not applicable to on-demand queues.",
+                    "properties": {
+                        "Commitment": {
+                            "description": "The length of the term of your reserved queue pricing plan commitment.",
+                            "enum": [
+                                "ONE_YEAR"
+                            ],
+                            "type": "string"
+                        },
+                        "RenewalType": {
+                            "description": "Specifies whether the term of your reserved queue pricing plan is automatically extended (AUTO_RENEW) or expires (EXPIRE) at the end of the term. When your term is auto renewed, you extend your commitment by 12 months from the auto renew date. You can cancel this commitment.",
+                            "enum": [
+                                "AUTO_RENEW",
+                                "EXPIRE"
+                            ],
+                            "type": "string"
+                        },
+                        "ReservedSlots": {
+                            "description": "Specifies the number of reserved transcode slots (RTS) for this queue. The number of RTS determines how many jobs the queue can process in parallel; each RTS can process one job at a time. You can't decrease the number of RTS in your reserved queue. You can increase the number of RTS by extending your existing commitment with a new 12-month commitment for the larger number. The new commitment begins when you purchase the additional capacity. You can't cancel your commitment or revert to your original commitment after you increase the capacity.",
+                            "type": "integer"
+                        }
+                    },
+                    "required": [
+                        "Commitment",
+                        "ReservedSlots",
+                        "RenewalType"
+                    ],
+                    "type": "object"
+                },
+                "Tags": {
+                    "description": "The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.",
+                    "items": {
+                        "properties": {
+                            "key": {
+                                "type": "string"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "required": [
+                "Name"
+            ],
+            "type": "object"
+        },
+        "X_Amz_Content_Sha256": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Date": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Algorithm": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Credential": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Security_Token": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_Signature": {
+            "required": false,
+            "type": "string"
+        },
+        "X_Amz_SignedHeaders": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

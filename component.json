@@ -1,0 +1,465 @@
+{
+    "title": "AWS Elemental MediaConvert",
+    "description": "AWS Elemental MediaConvert",
+    "docsUrl": "https://docs.aws.amazon.com/mediaconvert/",
+    "url": "https://api.apis.guru/v2/specs/amazonaws.com/mediaconvert/2017-08-29/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://mediaconvert.amazonaws.com/",
+                    "http://mediaconvert.amazonaws.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "hmac": {
+                "label": "Authorization (hmac)",
+                "viewClass": "TextFieldView",
+                "note": "Amazon Signature authorization v4"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "AssociateCertificate": {
+            "main": "./lib/actions/AssociateCertificate.js",
+            "title": "Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.",
+            "description": "Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AssociateCertificate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DisassociateCertificate": {
+            "main": "./lib/actions/DisassociateCertificate.js",
+            "title": "Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.",
+            "description": "Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DisassociateCertificate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DescribeEndpoints": {
+            "main": "./lib/actions/DescribeEndpoints.js",
+            "title": "Send an request with an empty body to the regional API endpoint to get your account API endpoint.",
+            "description": "Send an request with an empty body to the regional API endpoint to get your account API endpoint.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DescribeEndpoints.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListJobTemplates": {
+            "main": "./lib/actions/ListJobTemplates.js",
+            "title": "Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array",
+            "description": "Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListJobTemplates.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateJobTemplate": {
+            "main": "./lib/actions/CreateJobTemplate.js",
+            "title": "Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "description": "Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateJobTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteJobTemplate": {
+            "main": "./lib/actions/DeleteJobTemplate.js",
+            "title": "Permanently delete a job template you have created.",
+            "description": "Permanently delete a job template you have created.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteJobTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetJobTemplate": {
+            "main": "./lib/actions/GetJobTemplate.js",
+            "title": "Retrieve the JSON for a specific job template.",
+            "description": "Retrieve the JSON for a specific job template.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetJobTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateJobTemplate": {
+            "main": "./lib/actions/UpdateJobTemplate.js",
+            "title": "Modify one of your existing job templates.",
+            "description": "Modify one of your existing job templates.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateJobTemplate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListJobs": {
+            "main": "./lib/actions/ListJobs.js",
+            "title": "Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.",
+            "description": "Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListJobs.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateJob": {
+            "main": "./lib/actions/CreateJob.js",
+            "title": "Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "description": "Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CancelJob": {
+            "main": "./lib/actions/CancelJob.js",
+            "title": "Permanently cancel a job. Once you have canceled a job, you can't start it again.",
+            "description": "Permanently cancel a job. Once you have canceled a job, you can't start it again.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CancelJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetJob": {
+            "main": "./lib/actions/GetJob.js",
+            "title": "Retrieve the JSON for a specific completed transcoding job.",
+            "description": "Retrieve the JSON for a specific completed transcoding job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListPresets": {
+            "main": "./lib/actions/ListPresets.js",
+            "title": "Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.",
+            "description": "Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListPresets.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreatePreset": {
+            "main": "./lib/actions/CreatePreset.js",
+            "title": "Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "description": "Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreatePreset.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeletePreset": {
+            "main": "./lib/actions/DeletePreset.js",
+            "title": "Permanently delete a preset you have created.",
+            "description": "Permanently delete a preset you have created.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeletePreset.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPreset": {
+            "main": "./lib/actions/GetPreset.js",
+            "title": "Retrieve the JSON for a specific preset.",
+            "description": "Retrieve the JSON for a specific preset.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPreset.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdatePreset": {
+            "main": "./lib/actions/UpdatePreset.js",
+            "title": "Modify one of your existing presets.",
+            "description": "Modify one of your existing presets.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdatePreset.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListQueues": {
+            "main": "./lib/actions/ListQueues.js",
+            "title": "Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.",
+            "description": "Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListQueues.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateQueue": {
+            "main": "./lib/actions/CreateQueue.js",
+            "title": "Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html",
+            "description": "Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateQueue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteQueue": {
+            "main": "./lib/actions/DeleteQueue.js",
+            "title": "Permanently delete a queue you have created.",
+            "description": "Permanently delete a queue you have created.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteQueue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetQueue": {
+            "main": "./lib/actions/GetQueue.js",
+            "title": "Retrieve the JSON for a specific queue.",
+            "description": "Retrieve the JSON for a specific queue.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetQueue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateQueue": {
+            "main": "./lib/actions/UpdateQueue.js",
+            "title": "Modify one of your existing queues.",
+            "description": "Modify one of your existing queues.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateQueue.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TagResource": {
+            "main": "./lib/actions/TagResource.js",
+            "title": "Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html",
+            "description": "Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TagResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ListTagsForResource": {
+            "main": "./lib/actions/ListTagsForResource.js",
+            "title": "Retrieve the tags for a MediaConvert resource.",
+            "description": "Retrieve the tags for a MediaConvert resource.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListTagsForResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UntagResource": {
+            "main": "./lib/actions/UntagResource.js",
+            "title": "Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html",
+            "description": "Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UntagResource.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
